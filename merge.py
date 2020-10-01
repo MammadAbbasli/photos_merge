@@ -13,14 +13,14 @@ glasses = cv2.imread("gözlük.png", -1)
 while(True):
     ret, frame = cap.read()
     frame=cv2.flip(frame,1)
-    gray            = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    faces           = face_cascade.detectMultiScale(gray, scaleFactor=1.5, minNeighbors=5)
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.5, minNeighbors=5)
 
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2BGRA)
 
     for (x, y, w, h) in faces:
-        roi_gray    = gray[y:y+h, x:x+h] # rec
-        roi_color   = frame[y:y+h, x:x+h]
+        roi_gray = gray[y:y+h, x:x+h] # rec
+        roi_color = frame[y:y+h, x:x+h]
         #cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 255, 255), 3)
 
         eyes = eyes_cascade.detectMultiScale(roi_gray, scaleFactor=1.5, minNeighbors=5)
